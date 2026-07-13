@@ -1,0 +1,38 @@
+{% extends "Photo_Gallery_App/base.html" %}
+
+{% block content %}
+
+<h1 class="text-3xl font-bold mb-6">
+    Photo Gallery
+</h1>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+{% for photo in photos %}
+
+<div class="bg-white rounded shadow">
+
+    <img src="{{ photo.image.url }}" class="w-full h-60 object-cover">
+
+    <div class="p-4">
+
+        <h2 class="text-xl font-bold">
+            {{ photo.title }}
+        </h2>
+
+        <p>{{ photo.description|truncatewords:10 }}</p>
+
+        <a href="{% url 'photo_detail' photo.id %}"
+        class="text-blue-600">
+            View Details
+        </a>
+
+    </div>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+{% endblock %}
