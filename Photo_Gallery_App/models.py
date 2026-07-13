@@ -36,7 +36,7 @@ class Tag(models.Model):
 class Photo(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
-    image = models.ImageField(upload_to="photos/")
+    profile_picture = models.ImageField(upload_to="profile_pictures/")
     tags = models.ManyToManyField(Tag, blank=True)
     uploaded_by = models.ForeignKey(
         CustomUser,
