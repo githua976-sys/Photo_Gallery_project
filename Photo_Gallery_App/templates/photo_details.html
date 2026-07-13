@@ -1,0 +1,57 @@
+{% extends "Photo_Gallery_App/base.html" %}
+
+{% block content %}
+
+<div class="bg-white p-6 rounded shadow">
+
+<img
+src="{{ photo.image.url }}"
+class="w-full h-96 object-cover">
+
+<h1 class="text-3xl font-bold mt-4">
+
+{{ photo.title }}
+
+</h1>
+
+<p class="mt-4">
+
+{{ photo.description }}
+
+</p>
+
+<p class="mt-4">
+
+<strong>Likes:</strong>
+
+{{ photo.total_likes }}
+
+</p>
+
+<p>
+
+<strong>Dislikes:</strong>
+
+{{ photo.total_dislikes }}
+
+</p>
+
+<a
+href="{% url 'like_photo' photo.id %}"
+class="bg-green-600 text-white px-4 py-2 rounded">
+
+Like
+
+</a>
+
+<a
+href="{% url 'dislike_photo' photo.id %}"
+class="bg-red-600 text-white px-4 py-2 rounded">
+
+Dislike
+
+</a>
+
+</div>
+
+{% endblock %}
