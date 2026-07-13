@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from cloudinary.models import CloudinaryField
 # Create your models here.
 
 class CustomUser(AbstractUser):
@@ -16,15 +17,15 @@ class Profile(models.Model):
         related_name="profile"
     )
     bio = models.TextField(blank=True, null=True)
-    profile_picture = models.ImageField(
-        upload_to="profile_pictures/",
+    profile_picture = CloudinaryField(
+        "profile_picture",
         blank=True,
         null=True
     )
 
     def __str__(self):
         return f"{self.user.username}'s Profile"
-
+    
 
 class Tag(models.Model):
     name = models.CharField(max_length=50, unique=True)
